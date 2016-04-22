@@ -20,6 +20,18 @@ public class GameObject {
 		this.degrees += angularVelocity;
 	}
 	
+	public void setX(double x) {
+		this.x = x;
+	}
+	
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public void setDegrees(double degrees) {
+		this.degrees = degrees;
+	}
+	
 	public double getX() {
 		return x;
 	}

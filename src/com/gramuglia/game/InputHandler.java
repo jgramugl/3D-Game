@@ -21,20 +21,20 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	private boolean strafeLeft = false;
 	private boolean strafeRight = false;
 	
-	
 	private boolean rotateLeft = false;
 	private boolean rotateRight = false;
 	
-
-	private int x;
-	private int y;
-
+	private int x = 0;
+	private int y = 0;
+	public int xOrigin;
+	public int yOrigin;
+	
 	private JFrame window;
 	private int width;
 	private int height;
-
+	
 	private boolean enable = false;
-
+	
 	Cursor blankCursor;
 	Robot robot;
 	
@@ -42,16 +42,19 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		this.window = window;
 		this.width = width;
 		this.height = height;
-
+		
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		BufferedImage cursorImg = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 		blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank");
+		
+		xOrigin = width / 2;
+		yOrigin = height / 2;
 	}
 
 	public boolean getForward() {
@@ -80,11 +83,17 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 
 	
 	public int getX() {
-		return x;
+		xOrigin += x;
+		int temp = x;
+		x = 0;
+		return temp;
 	}
 
 	public int getY() {
-		return y;
+		yOrigin += y;
+		int temp = y;
+		y = 0;
+		return temp;
 	}
 
 	@Override
@@ -96,11 +105,10 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		/*if (!enable) {
-			x = arg0.getX();
-			y = arg0.getY();
-		}*/
-
+		if (!enable) {
+			x = arg0.getX() - xOrigin;
+			y = arg0.getY() - yOrigin;
+		}
 	}
 
 	@Override
@@ -132,14 +140,12 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 
 		// Escape key pressed
 		if (arg0.getKeyCode() == 27) {
-			/*enable = !enable;
+			enable = !enable;
 			if (enable) {
-				// System.out.println("Default cursor enabled.");
 				window.setCursor(Cursor.getDefaultCursor());
 			} else {
-				// System.out.println("Invisible cursor enabled.");
 				window.setCursor(blankCursor);
-			}*/
+			}
 		}
 	}
 
@@ -189,9 +195,13 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		/*if (!enable) {
+		if (!enable) {
 			robot.mouseMove(window.getX() + width / 2, window.getY() + height / 2);
-		}*/
+			x = arg0.getX() - xOrigin;
+			y = arg0.getY() - yOrigin;
+			xOrigin = width / 2;
+			yOrigin = height / 2;
+		}
 	}
 
 	@Override
