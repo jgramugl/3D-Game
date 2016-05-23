@@ -1,6 +1,5 @@
 package com.gramuglia.game.object;
 
-<<<<<<< HEAD
 //
 // Class to represent an object in the game
 //
@@ -36,20 +35,12 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
-public class GameObject {
-	private double x = 0;
-	private double y = 0;
-	private double degrees = 0;
-	
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public GameObject(double x, double y, double degrees) {
 		this.x = x;
 		this.y = y;
 		this.degrees = degrees;
 	}
 
-<<<<<<< HEAD
 	/**/
 	/*
 	public void translate(double xVelocity, double yVelocity)
@@ -73,14 +64,11 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void translate(double xVelocity, double yVelocity) {
 		x += xVelocity;
 		y += yVelocity;
 	}
 
-<<<<<<< HEAD
 	/**/
 	/*
 	public void rotate(double angularVelocity)
@@ -103,13 +91,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void rotate(double angularVelocity) {
 		this.degrees += angularVelocity;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public void setX(double x)
@@ -132,13 +117,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void setX(double x) {
 		this.x = x;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public void setY(double y)
@@ -161,13 +143,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void setY(double y) {
 		this.y = y;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public void setDegrees(double degrees)
@@ -190,13 +169,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void setDegrees(double degrees) {
 		this.degrees = degrees;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public double getX()
@@ -217,13 +193,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public double getX() {
 		return x;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public double getY()
@@ -244,13 +217,10 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public double getY() {
 		return y;
 	}
 	
-<<<<<<< HEAD
 	/**/
 	/*
 	public double getDegrees()
@@ -271,8 +241,6 @@ public class GameObject {
 		Joe Gramuglia
 	*/
 	/**/
-=======
->>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public double getDegrees() {
 		return degrees;
 	}
