@@ -2,6 +2,7 @@ package com.gramuglia.game.object;
 
 import java.util.Vector;
 
+<<<<<<< HEAD
 //
 // Class to represent a level in the game
 //
@@ -70,10 +71,27 @@ public class Level {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+public class Level {
+	
+	private Vector<Wall> walls;
+	protected String texture;
+	protected int size;
+	protected String george = "res/Monkey128x128.png";
+	
+	public Level(String texture, int size) {
+		this.texture = texture;
+		this.size = size;
+		
+		walls = new Vector<Wall>();
+	}
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void addWall(Wall wall) {
 		walls.add(wall);
 	}
 	
+<<<<<<< HEAD
 	/**/
 	/*
 	public void getWall(int i)
@@ -96,10 +114,13 @@ public class Level {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public Wall getWall(int i) {
 		return walls.get(i);
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public int getNumberOfWalls()
@@ -120,6 +141,8 @@ public class Level {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public int getNumberOfWalls() {
 		return walls.size();
 	}

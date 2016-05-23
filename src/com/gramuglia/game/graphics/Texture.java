@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// Loads a texture and allows access to pixels
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 package com.gramuglia.game.graphics;
 
 import java.awt.image.BufferedImage;
@@ -6,6 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+<<<<<<< HEAD
 //
 // Class to load and retrieve texture data
 //
@@ -42,6 +48,14 @@ public class Texture {
 	/**/
 	public Texture(String fileName, int size) {
 		// Load the texture
+=======
+public class Texture {
+
+	BufferedImage image = null;
+	private int[] pixels;
+	
+	public Texture(String fileName, int size) {
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		try {
 		    image = ImageIO.read(new File(fileName));
 		    
@@ -51,6 +65,7 @@ public class Texture {
 		}
 	}
 	
+<<<<<<< HEAD
 	/**/
 	/*
 	public int getPixelColor(int pixelIndex)
@@ -75,16 +90,25 @@ public class Texture {
 	/**/
 	public int getPixelColor(int pixelIndex) {
 		// Return nothing if the texture didn't load
+=======
+	public int getPixelColor(int pixelIndex) {
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		if (pixels == null) {
 			return 0;
 		}
 		
+<<<<<<< HEAD
 		// Return nothing if the pixel doesn't exist
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		if (pixelIndex < 0 || pixelIndex >= pixels.length) {
 			return 0;
 		}
 		
+<<<<<<< HEAD
 		// Return the pixel's color
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		return pixels[pixelIndex];
 	}
 }

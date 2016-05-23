@@ -8,11 +8,16 @@ import java.awt.image.DataBufferInt;
 import java.util.Collections;
 import java.util.Vector;
 
+<<<<<<< HEAD
+=======
+import com.gramuglia.game.object.DemoLevel;
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 import com.gramuglia.game.object.DistanceToWall;
 import com.gramuglia.game.object.GameObject;
 import com.gramuglia.game.object.Level;
 import com.gramuglia.game.object.Wall;
 
+<<<<<<< HEAD
 //
 // Class to render the game scene
 //
@@ -65,11 +70,27 @@ public class Camera extends GameObject {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+public class Camera extends GameObject {
+	private BufferedImage image;
+	private int[] pixels;
+	private Canvas canvas;
+	private int width;
+	private int height;
+	
+	Level level;
+	int size;
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public Camera(Canvas canvas, int width, int height, Level level, int size) {
 		// Camera's location and direction
 		super(0, 0, 0);
 		
+<<<<<<< HEAD
 		// Save parameters
+=======
+		// Set global variables
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		this.canvas = canvas;
 		this.width = width;
 		this.height = height;
@@ -81,6 +102,7 @@ public class Camera extends GameObject {
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void render()
@@ -105,6 +127,8 @@ public class Camera extends GameObject {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void render() {
 		// Get the windows buffer strategy
 		BufferStrategy bs = canvas.getBufferStrategy();
@@ -157,6 +181,7 @@ public class Camera extends GameObject {
 		bs.show();
 	}
 	
+<<<<<<< HEAD
 	/**/
 	/*
 	private void renderWall(Wall wall)
@@ -181,6 +206,8 @@ public class Camera extends GameObject {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private void renderWall(Wall wall) {
 		
 		// The differences between the wall and the camera
@@ -282,6 +309,7 @@ public class Camera extends GameObject {
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	private void clear()
@@ -304,12 +332,17 @@ public class Camera extends GameObject {
 	/**/
 	private void clear() {
 		// For every pixel on the canvas
+=======
+	private void clear() {
+		// For every pixel in the window
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		for (int i = 0; i < pixels.length; i++) {
 			// Set the pixel to black
 			pixels[i] = 0;
 		}
 	}
 	
+<<<<<<< HEAD
 	/**/
 	/*
 	private void renderFloor()
@@ -330,10 +363,13 @@ public class Camera extends GameObject {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private void renderFloor() {
 		// For the upper half of the screen
 		for (int i = pixels.length / 2; i < pixels.length; i++) {
 			// Set every pixel
+<<<<<<< HEAD
 			pixels[i] = 0x707070;
 		}
 	}
@@ -357,11 +393,21 @@ public class Camera extends GameObject {
 	AUTHOR
 		Joe Gramuglia
 	*/
+=======
+			pixels[i] = 0x666666;
+		}
+	}
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private void renderCeiling() {
 		// For the lower half of the screen
 		for (int i = 0; i < pixels.length / 2; i++) {
 			// Set every pixel
+<<<<<<< HEAD
 			pixels[i] = 0x383838;
+=======
+			pixels[i] = 0x555555;
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		}
 	}
 }

@@ -18,6 +18,7 @@ import com.gramuglia.game.object.DemoLevel;
 import com.gramuglia.game.object.DistanceToWall;
 import com.gramuglia.game.object.Level;
 
+<<<<<<< HEAD
 //
 // Class to run and play the game
 //
@@ -48,11 +49,27 @@ public class Game implements Runnable {
 	private InputHandler input;
 	
 	// The level for the game
+=======
+public class Game implements Runnable {
+	private final double ASPECT_RATIO = 9.0 / 16.0;
+	private final int WIDTH = 1920 / 2;
+	private final int HEIGHT = (int) (WIDTH * ASPECT_RATIO);
+	private final double SCALE = 1;
+
+	private Thread thread;
+	private boolean running = false;
+	
+	private Camera camera;
+	private Canvas canvas;
+	private InputHandler input;
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	Level level;
 	
 	// Speed of the camera
 	double moveSpeed = 0.05;
 	
+<<<<<<< HEAD
 	// The last position of the camera
 	double previousX;
 	double previousY;
@@ -80,6 +97,15 @@ public class Game implements Runnable {
 	public Game() {
 		// Create the size of the window
 		Dimension dimension = new Dimension(WIDTH, HEIGHT);
+=======
+	double previousX;
+	double previousY;
+	double previousDegrees;
+	
+	public Game() {
+		// Create the size of the window
+		Dimension dimension = new Dimension((int) (WIDTH * SCALE), (int) (HEIGHT * SCALE));
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		
 		// Create a canvas the size of the window 
 		canvas = new Canvas();
@@ -91,11 +117,19 @@ public class Game implements Runnable {
 		level = new DemoLevel(texture, size);
 		
 		// Create a camera
+<<<<<<< HEAD
 		camera = new Camera(canvas, WIDTH, HEIGHT, level, size);
+=======
+		camera = new Camera(canvas, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE), level, size);
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		
 		// Save previous state of camera
 		previousX = camera.getX();
 		previousY = camera.getY();
+<<<<<<< HEAD
+=======
+		previousDegrees = camera.getDegrees();
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		
 		// Create a window
 		JFrame window = createWindow(canvas);
@@ -120,6 +154,7 @@ public class Game implements Runnable {
 		// Focus the canvas 
 		canvas.requestFocus();
 	}
+<<<<<<< HEAD
 	
 	/**/
 	/*
@@ -141,6 +176,9 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void start() {
 		// Run the game
 		running = true;
@@ -152,6 +190,7 @@ public class Game implements Runnable {
 		thread.start();
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void stop()
@@ -172,6 +211,8 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void stop() {
 		// Stop the game
 		running = false;
@@ -184,6 +225,7 @@ public class Game implements Runnable {
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void run()
@@ -206,11 +248,17 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public void run() {
 		// Number of frames
 		int frames = 0;
 		
+<<<<<<< HEAD
 		// Amount of time that hasn't used
+=======
+		// Amount of time that wasn't used
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		double unusedTime = 0;
 		
 		// The last time the system time was retrieved
@@ -282,6 +330,7 @@ public class Game implements Runnable {
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void update()
@@ -303,10 +352,14 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private void update() {
 		// Check user input
 		updateCamera();
 		
+<<<<<<< HEAD
 		// Check collisions
 		resolveCollisions();
 	}
@@ -341,6 +394,31 @@ public class Game implements Runnable {
 		
 		// Mouse rotation control
 		camera.rotate(-input.getX() / 5.0);
+=======
+		// Resolve collisions
+		resolveCollisions();
+	}
+	
+	private void updateCamera() {
+		
+		// Save previous location
+		previousX = camera.getX();
+		previousY = camera.getY();
+		previousDegrees = camera.getDegrees();
+		
+		
+		// Keyboard rotation controls
+		if (input.getRotateLeft()) {
+			camera.rotate(1);
+		}
+		if (input.getRotateRight()) {
+			camera.rotate(-1);
+		}
+		
+		
+		// Mouse rotation control
+		//camera.rotate(-input.getX() / 5.0);
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 
 		// Used for camera movement
 		double sine = Math.sin(Math.toRadians(camera.getDegrees()));
@@ -361,6 +439,7 @@ public class Game implements Runnable {
 		}
 	}
 	
+<<<<<<< HEAD
 	/**/
 	/*
 	public void resolveCollisions()
@@ -386,6 +465,18 @@ public class Game implements Runnable {
 		// Store the distance of every wall
 		Vector<DistanceToWall> distances = new Vector<DistanceToWall>(level.getNumberOfWalls());
 
+=======
+	private void resolveCollisions() {
+		/*
+		// If camera didn't move, don't bother checking for collision
+		if (camera.getX() == previousX && camera.getY() == previousY) {
+			return;
+		}
+		
+		// Store the distance of every wall
+		Vector<DistanceToWall> distances = new Vector<DistanceToWall>();
+		
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		// Calculate the distance of every wall
 		for (int i = 0; i < level.getNumberOfWalls(); i++) {
 			double x = level.getWall(i).getX() - camera.getX();
@@ -398,6 +489,7 @@ public class Game implements Runnable {
 		// Sort the walls based on distance from the camera
 		Collections.sort(distances, new DistanceToWall());
 		
+<<<<<<< HEAD
 		// Calculate the slope and y-intercept of the camera
 
 		// Slope
@@ -566,10 +658,77 @@ public class Game implements Runnable {
 			}
 			
 		}
+=======
+		// Calculate direction player moved in (slope of the players movement)
+		
+		double cameraX = camera.getX() - previousX;
+		double cameraY = camera.getY() - previousY;
+		//double degreeDifference = camera.getDegrees() - previousDegrees;
+		//y = mx + b
+		// m = rise / run = yDifference / xDifference
+		// b = y - mx
+		
+		
+		double cameraSlope = cameraY / cameraX;
+		double cameraIntercept = camera.getY() - cameraSlope * camera.getX();
+		
+		//System.out.println(cameraSlope);
+		//System.out.println(cameraIntercept);
+		
+		// Check for collision with each wall
+		for (int i = 0; i < distances.size(); i++) {
+			if (distances.get(i).getDistance() > 0.6) {
+				break;
+			}
+			
+			
+			// Calculate the slope of the wall
+			
+			double wallX = distances.get(i).getWall().getX();
+			double wallY = distances.get(i).getWall().getY();
+			
+			// The coordinates of the left edge of the wall
+			double leftX = wallX - 0.5 * Math.cos(Math.toRadians(distances.get(i).getWall().getDegrees()));
+			double leftY = wallY - 0.5 * Math.sin(Math.toRadians(distances.get(i).getWall().getDegrees()));
+			
+			// The coordinates of the right edge of the wall
+			double rightX = wallX + 0.5 * Math.cos(Math.toRadians(distances.get(i).getWall().getDegrees()));
+			double rightY = wallY + 0.5 * Math.sin(Math.toRadians(distances.get(i).getWall().getDegrees()));
+			
+			double wallSlope = (rightY - leftY) / (rightX - leftX);
+			double wallIntercept = wallX - wallSlope * wallY;
+			
+			// Check if the player's slope intercepts the wall's slope
+			double x = (wallIntercept - cameraIntercept) / (cameraSlope - wallSlope);
+			double y = wallSlope * wallX + wallIntercept;
+			
+			//System.out.println(wallSlope);
+			//System.out.println(wallIntercept);
+			//System.out.println(x + ", " + y);
+			
+			// Adjust the position of the player and break out of the loop
+			double interceptDistance = Math.sqrt(x * x + y * y);
+			double distanceToWall = interceptDistance - distances.get(i).getDistance();
+			
+			if (distanceToWall < moveSpeed) {
+				camera.setX(x);
+				camera.setY(y);
+			}
+			*/
+			//System.out.println(distances.get(i).getWall().getX() + ", " + distances.get(i).getWall().getY() + " | " + distances.get(i).getDistance());
+		}
+		System.out.println("---------------------------------------------");
+		
+		
+		/*if (camera.getX() > 1) {
+			camera.setX(1);
+		}*/
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		
 		// Save state of camera
 		previousX = camera.getX();
 		previousY = camera.getY();
+<<<<<<< HEAD
 	}
 
 	/**/
@@ -592,11 +751,17 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+		previousDegrees = camera.getDegrees();
+	}
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private void render() {
 		// Allow the camera to render
 		camera.render();
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public JFrame createWindow(Canvas canvas)
@@ -619,6 +784,8 @@ public class Game implements Runnable {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private JFrame createWindow(Canvas canvas) {
 		// Create a window
 		JFrame window = new JFrame();

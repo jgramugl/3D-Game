@@ -2,6 +2,7 @@ package com.gramuglia.game.object;
 
 import java.util.Comparator;
 
+<<<<<<< HEAD
 //
 // Class to organize Camera to Wall data
 //
@@ -38,10 +39,18 @@ public class DistanceToWall implements Comparator<DistanceToWall> {
 	/**/
 	public DistanceToWall(double distance, Wall wall) {
 		// Save parameters
+=======
+public class DistanceToWall implements Comparator<DistanceToWall> {
+	private double distance;
+	private Wall wall;
+	
+	public DistanceToWall(double distance, Wall wall){
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		this.distance = distance;
 		this.wall = wall;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public DistanceToWall()
@@ -62,10 +71,13 @@ public class DistanceToWall implements Comparator<DistanceToWall> {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public DistanceToWall() {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public double getDistance()
@@ -110,10 +122,17 @@ public class DistanceToWall implements Comparator<DistanceToWall> {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+	public double getDistance(){
+		return distance;
+	}
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public Wall getWall() {
 		return wall;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public int compare(DistanceToWall arg0, DistanceToWall arg1)
@@ -137,6 +156,8 @@ public class DistanceToWall implements Comparator<DistanceToWall> {
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public int compare(DistanceToWall arg0, DistanceToWall arg1) {
 		// TODO Auto-generated method stub

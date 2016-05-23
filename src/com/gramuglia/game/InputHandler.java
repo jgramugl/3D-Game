@@ -14,17 +14,23 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
+<<<<<<< HEAD
 //
 // Class to record user input
 //
 public class InputHandler implements KeyListener, MouseListener, MouseMotionListener {
 	
 	// To detect movement
+=======
+public class InputHandler implements KeyListener, MouseListener, MouseMotionListener {
+	
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	private boolean forward = false;
 	private boolean backward = false;
 	private boolean strafeLeft = false;
 	private boolean strafeRight = false;
 	
+<<<<<<< HEAD
 	// Position of cursor
 	private int x = 0;
 	private int y = 0;
@@ -76,11 +82,34 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	public InputHandler(JFrame window, int width, int height) {
 		
 		// Saves parameters
+=======
+	private boolean rotateLeft = false;
+	private boolean rotateRight = false;
+	
+	private int x = 0;
+	private int y = 0;
+	public int xOrigin;
+	public int yOrigin;
+	
+	private JFrame window;
+	private int width;
+	private int height;
+	
+	private boolean enable = false;
+	
+	Cursor blankCursor;
+	Robot robot;
+	
+	public InputHandler(JFrame window, int width, int height) {
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		this.window = window;
 		this.width = width;
 		this.height = height;
 		
+<<<<<<< HEAD
 		// Create robot
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
@@ -88,15 +117,22 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 		// Create cursor
 		BufferedImage cursorImg = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 		blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank");
 		
 		// Save cursor's origin
+=======
+		BufferedImage cursorImg = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank");
+		
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		xOrigin = width / 2;
 		yOrigin = height / 2;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public boolean getForward()
@@ -117,10 +153,13 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public boolean getForward() {
 		return forward;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public boolean getBackward()
@@ -141,10 +180,13 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public boolean getBackward() {
 		return backward;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public boolean getStrafeLeft()
@@ -165,10 +207,13 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	public boolean getStrafeLeft() {
 		return strafeLeft;
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public boolean getStrafeRight()
@@ -316,12 +361,51 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// Save the distance traveled if input is enabled
+=======
+	public boolean getStrafeRight() {
+		return strafeRight;
+	}
+	
+	
+	public boolean getRotateLeft() {
+		return rotateLeft;
+	}
+	public boolean getRotateRight() {
+		return rotateRight;
+	}
+
+	
+	public int getX() {
+		xOrigin += x;
+		int temp = x;
+		x = 0;
+		return temp;
+	}
+
+	public int getY() {
+		yOrigin += y;
+		int temp = y;
+		y = 0;
+		return temp;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		if (!enable) {
 			x = arg0.getX() - xOrigin;
 			y = arg0.getY() - yOrigin;
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void keyPressed(KeyEvent arg0)
@@ -348,6 +432,11 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 	public void keyPressed(KeyEvent arg0) {
 		
 		// Save the state of the movement buttons if enabled
+=======
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		if (!enable) {
 			if (arg0.getKeyCode() == 65) {
 				strafeLeft = true;
@@ -361,9 +450,24 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 			if (arg0.getKeyCode() == 83) {
 				backward = true;
 			}
+<<<<<<< HEAD
 		}
 
 		// Toggle enabled state and cursor control
+=======
+			
+			if (arg0.getKeyCode() == 81) {
+				// Rotate Left
+				rotateLeft = true;
+			}
+			if (arg0.getKeyCode() == 69) {
+				// Rotate Right
+				rotateRight = true;
+			}
+		}
+
+		// Escape key pressed
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 		if (arg0.getKeyCode() == 27) {
 			enable = !enable;
 			if (enable) {
@@ -374,6 +478,7 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void keyReleased(KeyEvent arg0)
@@ -396,6 +501,8 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
@@ -411,6 +518,7 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		if (arg0.getKeyCode() == 83) {
 			backward = false;
 		}
+<<<<<<< HEAD
 	}
 
 	/**/
@@ -435,11 +543,25 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+		
+		if (arg0.getKeyCode() == 81) {
+			// Rotate Left
+			rotateLeft = false;
+		}
+		if (arg0.getKeyCode() == 69) {
+			// Rotate Right
+			rotateRight = false;
+		}
+	}
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void mouseClicked(MouseEvent arg0)
@@ -462,11 +584,14 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
+<<<<<<< HEAD
 	
 	/**/
 	/*
@@ -490,12 +615,16 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void mouseExited(MouseEvent arg0)
@@ -530,11 +659,21 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 			y = arg0.getY() - yOrigin;
 			
 			// Reset the origin
+=======
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		if (!enable) {
+			robot.mouseMove(window.getX() + width / 2, window.getY() + height / 2);
+			x = arg0.getX() - xOrigin;
+			y = arg0.getY() - yOrigin;
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 			xOrigin = width / 2;
 			yOrigin = height / 2;
 		}
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void mousePressed(MouseEvent arg0)
@@ -557,12 +696,15 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
+<<<<<<< HEAD
 	/**/
 	/*
 	public void mouseReleased(MouseEvent arg0)
@@ -585,6 +727,8 @@ public class InputHandler implements KeyListener, MouseListener, MouseMotionList
 		Joe Gramuglia
 	*/
 	/**/
+=======
+>>>>>>> bbf0205244b7183f6a30dfb4438931d527bf123e
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
