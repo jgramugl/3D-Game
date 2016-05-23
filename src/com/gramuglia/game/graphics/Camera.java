@@ -8,27 +8,68 @@ import java.awt.image.DataBufferInt;
 import java.util.Collections;
 import java.util.Vector;
 
-import com.gramuglia.game.object.DemoLevel;
 import com.gramuglia.game.object.DistanceToWall;
 import com.gramuglia.game.object.GameObject;
 import com.gramuglia.game.object.Level;
 import com.gramuglia.game.object.Wall;
 
+//
+// Class to render the game scene
+//
 public class Camera extends GameObject {
+	
+	// The image to render on
 	private BufferedImage image;
+	
+	// The pixels of the image
 	private int[] pixels;
+	
+	// The canvas of the game
 	private Canvas canvas;
+	
+	// The width of the canvas
 	private int width;
+	
+	// The height of the canvas
 	private int height;
 	
+	// The level the camera is in
 	Level level;
+	
+	// The size of objects in the world in pixels
 	int size;
 
+	/**/
+	/*
+	public Camera(Canvas canvas, int width, int height, Level level, int size)
+	
+	NAME
+		public Camera(Canvas canvas, int width, int height, Level level, int size) - constructor of Camera
+	
+	SYNOPSIS
+		public Camera(Canvas canvas, int width, int height, Level level, int size)
+		
+		Canvas canvas - canvas to draw on
+		int width - width of canvas
+		int height - height of canvas
+		Level level - level the camera is in
+		int size - size of game objects in pixels
+	
+	DESCRIPTION
+		Create the camera.
+	
+	RETURNS
+		A Camera object
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
+	/**/
 	public Camera(Canvas canvas, int width, int height, Level level, int size) {
 		// Camera's location and direction
 		super(0, 0, 0);
 		
-		// Set global variables
+		// Save parameters
 		this.canvas = canvas;
 		this.width = width;
 		this.height = height;
@@ -40,6 +81,30 @@ public class Camera extends GameObject {
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	}
 
+	/**/
+	/*
+	public void render()
+	
+	NAME
+		public void render() - Render the scene
+	
+	SYNOPSIS
+		public void render()
+	
+	DESCRIPTION
+		Clears the screen.
+		Renders the floor.
+		Renders the ceiling.
+		Renders every wall from farthest to closest.
+		
+	
+	RETURNS
+		Void
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
+	/**/
 	public void render() {
 		// Get the windows buffer strategy
 		BufferStrategy bs = canvas.getBufferStrategy();
@@ -92,6 +157,30 @@ public class Camera extends GameObject {
 		bs.show();
 	}
 	
+	/**/
+	/*
+	private void renderWall(Wall wall)
+	
+	NAME
+		private void renderWall(Wall wall) - Render a wall
+	
+	SYNOPSIS
+		private void renderWall(Wall wall)
+		
+		Wall wall - the wall to render
+	
+	DESCRIPTION
+		Determines if the wall should be rendered.
+		Calculates where the wall should be rendered.
+		Changes every pixel to the appropriate texture color.
+	
+	RETURNS
+		Void
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
+	/**/
 	private void renderWall(Wall wall) {
 		
 		// The differences between the wall and the camera
@@ -193,27 +282,86 @@ public class Camera extends GameObject {
 		}
 	}
 
+	/**/
+	/*
+	private void clear()
+	
+	NAME
+		private void clear() - Resets the canvas
+	
+	SYNOPSIS
+		private void clear()
+	
+	DESCRIPTION
+		Reset every pixel on the canvas
+	
+	RETURNS
+		Void
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
+	/**/
 	private void clear() {
-		// For every pixel in the window
+		// For every pixel on the canvas
 		for (int i = 0; i < pixels.length; i++) {
 			// Set the pixel to black
 			pixels[i] = 0;
 		}
 	}
 	
+	/**/
+	/*
+	private void renderFloor()
+	
+	NAME
+		private void renderFloor() - Render the floor
+	
+	SYNOPSIS
+		private void renderFloor()
+	
+	DESCRIPTION
+		Change every pixel below the horizon a color
+	
+	RETURNS
+		Void
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
+	/**/
 	private void renderFloor() {
 		// For the upper half of the screen
 		for (int i = pixels.length / 2; i < pixels.length; i++) {
 			// Set every pixel
-			pixels[i] = 0x666666;
+			pixels[i] = 0x707070;
 		}
 	}
 	
+	/**/
+	/*
+	private void renderCeiling()
+	
+	NAME
+		private void renderCeiling() - Render the ceiling
+	
+	SYNOPSIS
+		private void renderCeiling()
+	
+	DESCRIPTION
+		Change every pixel above the horizon a color
+	
+	RETURNS
+		Void
+	
+	AUTHOR
+		Joe Gramuglia
+	*/
 	private void renderCeiling() {
 		// For the lower half of the screen
 		for (int i = 0; i < pixels.length / 2; i++) {
 			// Set every pixel
-			pixels[i] = 0x555555;
+			pixels[i] = 0x383838;
 		}
 	}
 }
